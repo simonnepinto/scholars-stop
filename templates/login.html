@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<style> 
+    h1{
+        padding: 20px;
+        text-align: center;
+        color: #f3f1ed;
+    }
+    #loginForm{
+        margin-top: 30px;
+    }
+    #loginButton{
+        padding: 10px;
+    }
+    .btn-primary{
+        background-color: rgba(168, 92, 20, 0.979);
+    }
+    body {
+        background-image: url('/static/img/images/login_wallpaper.jpg');
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    {% for message in get_flashed_messages() %}
+        <div class="container">
+            <div class="row">
+                <div class="col-8 offset-2" style="margin-top: 30px;">
+                    <div class="alert alert-warning">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div id="loginForm" class="container">
+    <h1>Login</h1> 
+    <br>
+    <div class="row" class="align-self-center">
+        <div class="col-sm-4 offset-sm-4">
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="email" style="color:#f8e8b4;">Email address</label>
+                    <input type="email" class="form-control" name="email" value="{{
+                        request.form.email }}" id="email" placeholder="Enter Email">
+                </div>
+                <div class="form-group">
+                    <label for="password" style="color:#f8e8b4;">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" value="{{
+                        request.form.password }}" placeholder="Enter Password">
+                </div>
+                <div class="form-group form-check" style="color:#f8e8b4;">
+                    <input type="checkbox" class="form-check-input" id="remember" name="remember" checked>
+                    <label class="form-check-label" for="remember">Remember Me</label>
+                </div>
+                <div class="text-center" id="loginButton">
+                    <input class="btn btn-md btn-primary" type="submit" value="Login">
+                </div>       
+                <br>
+                <br>
+                <div style="color:#f8e8b4; text-align: center;">
+                    Don't have an account? <a style="color:#f8e8b4; font-weight: 600;" href="/signup">SignUp</a>.
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    {% if error %}
+      <p class="error"><strong>Error:</strong> {{ error }}
+    {% endif %}
+
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

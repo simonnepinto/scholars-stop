@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<style> 
+    h1{
+        padding: 10px;
+        text-align: center;
+        color: #faf7f3;
+    }
+    #sellButton{
+        padding: 10px;
+    }
+    .btn-primary{
+        background-color: rgba(168, 92, 20, 0.979);
+    }
+    .is-danger{
+        background-color: rgba(80, 41, 4, 0.979);
+    }
+    #condition{
+        width: 350px;
+        height: 39px;
+        border-radius: 5px;
+        color: #151618;
+    }
+    body {
+        background-image: url('/static/img/images/2.png');
+    }
+</style>
+{% endblock %}
+
+{% block home%}
+<li class="nav-item" ><a class="nav-link" href="/user" style="color:#000000;"><span class="fa fa-home fa-lg" ></span> Home</a></li>
+{% endblock %}
+
+{% block head %}
+
+    <span class="navbar-text">
+        <a id="loginModal" href = "/dashboard" style="color:#000000;">
+        <span class="fa fa-columns"></span> Dashboard </a>
+    </span>   
+    <span class="navbar-text">
+        &nbsp;&nbsp;&nbsp;<a id="signOutButton" href = "/logout" style="color:#000000;"> 
+        <span class="fa fa-sign-out"></span> Logout </a>
+    </span> 
+
+{% endblock %}
+
+
+{% block body %}
+
+<div class='container'>
+    
+</div>
+
+<div id="sellForm" class="container">
+    <h1>Sell Books</h1>    
+    <div class='container'>
+        {% for message in get_flashed_messages() %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-8 offset-2">
+                        <div class="alert alert-warning">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{ message }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-sm-4 offset-sm-4">
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label for="book" style="color:#f8e8b4;">Book Name</label>
+                    <input type="text" class="form-control" name="book" value="{{
+                        request.form.book }}" id="email" placeholder="Enter the Name of the Book" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="book_id" style="color:#f8e8b4;">Book ID</label>
+                    <input type="text" class="form-control" id="book_id" name="book_id" value="{{
+                        request.form.book_id }}" placeholder="Enter the Book ID" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="price" style="color:#f8e8b4;">Price</label>
+                    <input type="number" class="form-control" id="price" name="price" value="{{
+                        request.form.price }}" placeholder="Enter the price of the book ( &#x20B9;0 - &#x20B9;500 )" min="0" max="500" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="pages" style="color:#f8e8b4;">No of Pages</label>
+                    <input type="number" class="form-control" id="pages" name="pages" value="{{
+                        request.form.pages }}" placeholder="Enter the number of pages" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="condition" style="color:#f8e8b4;">Condition of the Book</label>
+                    <br>
+                    <select id="condition" name="condition" value="{{request.form.condition }}" style="padding: 6px" required="required">
+                        <option value="New">As New (book is in the same immaculate condition as when it was published)</option>
+                        <option value="Fine">Fine (book may have been opened and read, but there are no defects to the book, jacket or pages) </option>
+                        <option value="Good">Good (average used worn book that has all pages or leaves present)</option>
+                        <option value="Poor">Poor (book may be soiled, scuffed, stained or spotted and may have loose joints, hinges, pages, etc)</option>
+                    </select>
+                </div>
+                <div class="text-center" id="sellButton">
+                    <input class="btn btn-primary" type="submit" value="Sell Book">
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    {% if error %}
+      <p class="error"><strong>Error:</strong> {{ error }}
+    {% endif %}
+</div>
+
+{% endblock %}
+
+
+
+{% block footer %}
+{% endblock %}

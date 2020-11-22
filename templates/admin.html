@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block home%}
+<li class="nav-item" ><a class="nav-link" href="/admin" style="color:#000000;"><span class="fa fa-home fa-lg" ></span> Home</a></li>
+{% endblock %}
+
+{% block contact%}
+{% endblock %}
+
+{% block head %}
+
+<span class="navbar-text">
+    <a id="loginModal" href = "/admin_dashboard" style="color:#000000;">
+    <span class="fa fa-columns"></span> Dashboard </a>
+</span>   
+<span class="navbar-text">
+    &nbsp;&nbsp;&nbsp;<a id="signOutButton" href = "/logout" style="color:#000000;"> 
+    <span class="fa fa-sign-out"></span> Logout </a>
+</span> 
+
+{% endblock %}
+
+
+
+{% block body %}
+
+<!-- Jumbotron -->
+    <div class='container'>
+    {% for message in get_flashed_messages() %}
+        <div class="container">
+            <div class="row">
+                <div class="col-8 offset-2">
+                    <div class="alert alert-warning">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <header class="jumbotron">
+        <div class="container">
+            <div class="row row-header">
+                <div class="col-12 offset-sm-2 align-self-center">
+                    <h1>Welcome to Scholar's Stop, {{name}}</h1>
+                </div>
+                <div class="col-12 offset-sm-4 align-self-center">
+                    <p>Your gateway to infinite knowledge</p>
+                </div>
+            </div>
+        </div>
+    </header>
+<!-- End of Jumbotron -->
+
+
+    <!-- Main Page Content -->
+    <div class="container">
+        <!-- Carousel -->
+        <div class="row row-content">
+            <div class="col">
+                <div id="mycarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active" >
+                        <img src="{{ url_for('static', filename='img/images/Carousel1.png') }} " alt="Chania" width="50%" style="float:left;">
+                            <div class="carousel-caption offset-5" width="50%" style="text-align:center">
+                                <p><q>The reading of all good books is like conversation with the finest (people) of the past centuries.</q></p>
+                                <h5>Descartes</h5>
+                            </div>
+                        </div>
+                            
+                        <div class="carousel-item">
+                            <img src="{{ url_for('static', filename='img/images/Carousel2.jpg') }}" alt="Chania" width="50%" style="float:left;">
+                            <div class="carousel-caption offset-5" width="50%" style="text-align:center">
+                                <p><q>The more that you read, the more things you will know. The more that you learn, the more places you’ll go.</q></p>
+                                <h5>Dr. Seuss</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ url_for('static', filename='img/images/carousel3.jpg') }} " alt="Chania" width="50%" style="float:left;">
+                            <div class="carousel-caption offset-5" width="50%" style="text-align:center">
+                                <p><q>Reading is essential for those who seek to rise above the ordinary.</q></p>
+                                <h5>Jim Rohn</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ol class="carousel-indicators">
+                        <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#mycarousel" data-slide-to="1"></li>
+                        <li data-target="#mycarousel" data-slide-to="2"></li>                     
+                    </ol>
+                    <a class="carousel-control-prev" href="#mycarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                
+                </div>
+            </div>
+        </div>
+        <!-- End of Carousel -->
+
+        <!-- Buy and Sell Books -->
+        <div class="row row-content">
+            <div class="col-12 col-sm-6" id = "books" >
+                <img src="{{ url_for('static', filename='img/images/book1.jpg') }} " alt="Bg1" class="responsive">
+            </div>
+            <div class="col-12 col-sm-6" id = "books">
+                <img src="{{ url_for('static', filename='img/images/book2.jpg') }}" alt="Bg2" class="responsive">
+            </div>
+        </div>
+        <!-- End of Buy and Sell Books -->
+    </div>
+<!-- End of main page content -->
+
+{% endblock %}
+
+
+
+{% block footer %}
+    <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">             
+                    <div class="col-4 offset-1 col-sm-2">
+                        <h5 style="color:#c2874d;">Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="/admin" style="color:#af7031;">Home</a></li>
+                            <li><a href="/admin" style="color:#af7031;">About</a></li>
+                            <li><a href="/admin" style="color:#af7031;">Contact</a></li>
+                        </ul>  
+                    </div>
+                    <div class="col-7 col-sm-5">
+                        <h5 style="color:#be8a56;"><q>A reader lives a thousand lives before he dies.<br>  A man who never reads lives only one</q></h5>
+                        <h6 style="color:#af7031;">George R. R. Martin, <cite>A Dance with Dragons</cite></h6>
+                    </div>
+                    <div class="col-12 col-sm-4 align-self-center">
+                        <div class="text-center" >
+                            <a style="color:#c2874d;" class="btn btn-social-icon btn-google" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+                            <a style="color:#c2874d;" class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+                            <a style="color:#c2874d;" class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
+                            <a style="color:#c2874d;" class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+                            <a style="color:#c2874d;" class="btn btn-social-icon btn-google" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+                            <a style="color:#c2874d;" class="btn btn-social-icon btn-gmail" href="mailto:"><i class="fa fa-envelope-o"></i></a>
+                        </div>
+                    </div>
+            </div>
+            </div>
+        </footer>
+    <!-- End Footer -->
+    {% endblock %}

@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+
+
+{% block contact%}
+{% endblock %}
+
+{% block title %}
+<style> 
+    h1{
+        padding: 10px;
+        text-align: center;
+        color: #f7d9d6;
+    }
+    h2{
+        padding: 10px;
+        text-align: center;
+        color:  #f7d9d6;
+    }
+    table, td, th {
+        border: 3px solid rgb(233, 194, 194);
+        padding: 5px;
+    }
+    body {
+        background-image: url('/static/img/images/6.png');
+    }
+    
+</style>
+{% endblock %}
+
+
+{% block home%}
+<li class="nav-item" ><a class="nav-link" href="/admin" style="color:#000000;"><span class="fa fa-home fa-lg" ></span> Home</a></li>
+{% endblock %}
+
+{% block head %}
+
+<span class="navbar-text">
+    <a id="loginModal" href = "/dashboard" style="color:#000000;">
+    <span class="fa fa-columns"></span> Dashboard </a>
+</span>   
+<span class="navbar-text">
+    &nbsp;&nbsp;&nbsp;<a id="signOutButton" href = "/logout" style="color:#000000;"> 
+    <span class="fa fa-sign-out"></span> Logout </a>
+</span> 
+
+{% endblock %}
+
+
+
+{% block body %}
+
+<!-- Jumbotron -->
+<div class='container'>
+    {% for message in get_flashed_messages() %}
+        <div class="container">
+            <div class="row">
+                <div class="col-8 offset-2">
+                    <div class="alert alert-warning">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+   
+        <div class="container">
+            <div class="row row-header">
+                <div class="col-12">
+                    <h1 style = "text-transform:capitalize; text-align: center; padding: 10px;"> {{name}}'s Dashboard</h1>
+                </div>
+            </div>
+        </div>
+
+<!-- End of Jumbotron -->
+
+<h2>Books Sold</h2>
+{% if books_sold|length < 1 %}
+    <h4 style="text-align: center; color:#f5d7d7; padding: 5px;">No books sold yet</h4>
+
+{% else %}
+    
+    <table style="color:#f5d7d7; padding: 5px;">
+        <tr>
+            <th>Seller Name</th>
+            <th>Book Name</th>
+            <th>Book ID</th>
+            <th>Price</th>
+            <th>Pages</th>
+            <th>Condition</th>
+            <th>Date Sold</th>
+        </tr>
+        {% for book in books_sold %}
+            <tr style="text-transform: uppercase;">
+                <td>{{ book.name }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.isbn }}</td>
+                <td><i class="fa fa-inr"></i>&nbsp;{{ book.price }}</td>
+                <td>{{ book.pages }}</td>
+                <td>{{ book.condition }}</td>
+                <td>{{ book.date_added.date() }}</td>
+            </tr>
+        {% endfor %}
+        {% for book in books_more %}
+        <tr style="text-transform: uppercase;">
+            <td>{{ book.name }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.isbn }}</td>
+            <td><i class="fa fa-inr"></i>&nbsp;{{ book.price }}</td>
+            <td>{{ book.pages }}</td>
+            <td>{{ book.condition }}</td>
+            <td>{{ book.date_added.date() }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endif %}
+
+<br>
+
+<h2>Books Bought</h2>
+
+{% if books_bought|length < 1 %}
+    <h4 style="text-align: center; color:#f5d7d7; padding: 5px;">No books sold yet</h4>
+
+{% else %}
+<table style="color:#f5d7d7; padding: 5px;">
+    <tr>
+        <th>Buyer Name</th>
+        <th>Book Name</th>
+        <th>Book ID</th>
+        <th>Price</th>
+        <th>Date Bought</th>
+    </tr>
+    {% for book in books_bought %}
+        <tr style="text-transform: uppercase;">
+            <td>{{ book.name }}</td> 
+            <td>{{ book.title }}</td>
+            <td>{{ book.isbn }}</td>
+            <td><i class="fa fa-inr"></i>&nbsp;{{ book.amt_sold_for }}</td>
+            <td>{{ book.order_date.date() }}</td>     
+        </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+<br>
+
+<h2>Book Rating</h2>
+
+{% if ratings|length < 1 %}
+    <h4 style="text-align: center; color:#f5d7d7; padding: 5px;">No ratings yet</h4>
+
+{% else %}
+<table style="color:#f5d7d7; padding: 5px;">
+    <tr>
+        <th>User Name</th>
+        <th>Rating</th>
+        <th>Queries</th>
+        <th>Action</th>
+    </tr>
+    {% for rating in ratings %}
+        <tr style="text-transform: uppercase;">
+            <td>{{ rating.name }}</td> 
+            <td>{{ rating.rating }}</td>
+            <td>{{ rating.issues }}</td>
+            <td><a style="color:#f3f2f0;" href="/delete_rating/{{rating.id}}">Delete</a></td>
+        </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+<br>
+
+<h2>User Queries</h2>
+
+{% if queries|length < 1 %}
+    <h4 style="text-align: center; color:#f5d7d7; padding: 5px;">No queries yet</h4>
+
+{% else %}
+<table style="color:#f5d7d7; padding: 5px;">
+    <tr>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Queries</th>
+        <th>Solved?</th>
+    </tr>
+    {% for query in queries %}
+        <tr style="text-transform: uppercase;">
+            <td>{{ query.name }}</td> 
+            <td>{{ query.email }}</td>
+            <td>{{ query.phone }}</td>    
+            <td>{{ query.user_queries }}</td> 
+            <td><a style="color:#f3f2f0;" href="/delete_query/{{query.id}}">Solved</a></td>
+        </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+<!--
+<table id="book" style="color:#f5d7d7; border-collapse: collapse; display: table; ">
+    <tr>
+        <th>Book Name</th>
+        <th>Book ID</th>
+        <th>Price</th>
+        <th>Date Bought</th>
+    </tr>
+    
+    <tr style="text-transform: uppercase; display: table-cell;"> 
+        {% for book in book_title %} 
+            <td style="display: block;">{{ book }}</td>
+        {% endfor %}
+    </tr>
+    
+    <tr style="text-transform: uppercase; display: table-cell;">
+        {% for book in book_isbn %} 
+            <td style="display: block;">{{ book }}</td>  
+        {% endfor %}
+    </tr>
+                
+    <tr style="text-transform: uppercase; display: table-cell;">
+        {% for book in transactions %} 
+            <td style="display: block;">{{ book.amt_sold_for }}</td>
+            {% endfor %}
+    </tr>
+
+    <tr style="text-transform: uppercase; display: table-cell;">
+        {% for book in transactions %} 
+            <td style="display: block;">{{ book.order_date.date() }}</td>
+        {% endfor %}
+    </tr>
+</table>
+    -->
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}

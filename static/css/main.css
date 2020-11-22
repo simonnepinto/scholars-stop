@@ -1,0 +1,160 @@
+.row-header {
+  margin: 0px auto;
+  padding: 0px 0px; 
+}
+
+.row-content {
+  margin: 0px auto;
+  padding: 50px 0px;
+  border-bottom: 1px ridge;
+  min-height: 400px; 
+}
+
+.footer {
+  clear: both;
+  position: relative;
+  background-color: #794f19;
+  margin: 0px auto;
+  padding: 20px 0px;
+  z-index:10; }
+
+.jumbotron {
+  margin: 0px auto;
+  padding: 50px 30px;
+  background-image: url(../img/images/jumbotron2.jpg); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 200px;
+  color: rgb(51, 38, 13); }
+
+.jumbotron h1{
+  color: #FFFFFF;
+}
+
+.jumbotron p{
+  color: #FFFFFF;
+}
+
+address {
+  font-size: 80%;
+  margin: 0px;
+  color: #0f0f0f; }
+
+body {
+  padding: 50px 0px 0px 0px;
+  z-index: 0; 
+  background-image: url(../img/images/wall.jpg);
+  overflow-x: hidden;
+}
+body,html {
+  overflow-x: hidden;
+}
+.navbar {
+  background-color:#834405;
+  }
+.navbar-light .navbar-nav .nav-item{
+  color: #FFFFFF;
+  }
+
+.tab-content {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 10px; }
+
+.carousel {
+  background: #4b3524; }
+  .carousel .carousel-item {
+    height: 300px; }
+    .carousel .carousel-item img {
+      position: absolute;
+      background-size: cover;
+      top: 0;
+      left: 0;
+      min-height: 300px; }
+      .carousel .carousel-item .carousel-caption{
+        position: absolute;
+        top:70px;
+      }
+
+
+#carouselButton {
+  right: 0px;
+  position: absolute;
+  bottom: 0px;
+  z-index: 1; }
+
+.modal-header {
+  background-color: #834405; }
+  
+.modal-header button {
+  color: #DEB887; }
+
+.modal-title {
+  color: floralwhite; }
+
+.modal-body {
+  background-color: #DEB887; }
+
+.modal-footer {
+  background-color: #DEB887; }
+
+.btn-danger{
+  background-color: #CD5C5C;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.container .row #books .btn{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: rgba(168, 92, 20, 0.979);
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.responsive {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 767px){
+  .carousel .carousel-item .carousel-caption{
+    position: absolute;
+    top: 30px;
+    font-size: small;
+  }
+}
+
+.content{
+  margin: 0 auto;
+  width: 400px;
+}
+  
+
+table, td, th {
+  border: 3px solid #aaa;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  height: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+td {
+  text-align: center;
+  padding: 5px;
+  font-weight: bold;
+}

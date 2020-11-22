@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+
+{% block home%}
+
+  {% if not current_user.is_authenticated %}
+  <li class="nav-item" ><a class="nav-link" href="/" style="color:#000000;"><span class="fa fa-home fa-lg" ></span> Home</a></li>
+  {% endif %}
+
+  {% if current_user.is_authenticated %}
+    <li class="nav-item" ><a class="nav-link" href="/user" style="color:#000000;"><span class="fa fa-home fa-lg" ></span> Home</a></li>
+  {% endif %}
+{% endblock %}
+
+{% block head %}
+
+  {% if current_user.is_authenticated %}
+      <span class="navbar-text">
+        <a id="loginModal" href = "/dashboard" style="color:#000000;">
+        <span class="fa fa-columns"></span> Dashboard </a>
+      </span>   
+      <span class="navbar-text">
+          &nbsp;&nbsp;&nbsp;<a id="signOutButton" href = "/logout" style="color:#000000;"> 
+          <span class="fa fa-sign-out"></span> Logout </a>
+      </span> 
+  {% endif %}
+
+  {% if not current_user.is_authenticated %}
+  <span class="navbar-text">
+    <a id="loginModal" href = "/login" style="color:#000000;">
+    <span class="fa fa-user"></span> Login </a>
+  </span>   
+  <span class="navbar-text">
+      &nbsp;&nbsp;&nbsp;<a id="signUpButton" href = "/signup" style="color:#000000;"> 
+      <span class="fa fa-sign-in"></span> Sign Up </a>
+  </span>  
+      
+  {% endif %}
+
+{% endblock %}
+
+
+
+{% block title %}
+<style> 
+    h1{
+        padding: 20px;
+        text-align: center;
+        color:#eeeadd;
+    }
+
+    #contactButton{
+        padding: 20px;
+    }
+
+    .btn-primary{
+        background-color: rgba(168, 92, 20, 0.979);
+    }
+    ::placeholder{
+      font-size: medium;
+    }
+    body {
+        background-image: url('/static/img/images/contact_wallpaper.jpg');
+    }
+</style>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+    <h1>Contact Us</h1>    
+    <br>
+    <form action="" method="POST">
+        <div class="form-group">
+            <input type="text" class="form-control form-control-lg" name="name" id="name" placeholder="Name" value="{{
+              request.form.name }}" required="required">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" name="email" id="email" placeholder="Email" value="{{
+              request.form.email }}" required="required">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" name="phone" id="phone" placeholder="Phone" value="{{
+              request.form.phone }}"required="required">
+          </div>
+          <div class="form-group">
+            <textarea rows="5" class="form-control" name="subject" id="subject" value="{{
+              request.form.subject }}" placeholder="Write your Queries.." ></textarea>
+          </div>
+          <div class="text-center"  id="contactButton" >
+            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+          </div>
+                
+      </form>
+  </div>
+
+{% endblock %}
+

@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<style> 
+    h1{
+        padding: 10px;
+        margin-bottom: 0px;
+        text-align: center;
+        color: #faf7f3;
+    }
+    h4{
+        color: #faf7f3;
+    }
+    .btn-warning{
+        background-color: rgba(119, 87, 18, 0.74);
+    }   
+    body {
+        background-image: url('/static/img/images/3.png');
+    }
+</style>
+{% endblock %}
+
+{% block home%}
+<li class="nav-item" ><a class="nav-link" href="/user" style="color:#000000;"><span class="fa fa-home fa-lg" ></span> Home</a></li>
+{% endblock %}
+
+
+{% block head %}
+
+    <span class="navbar-text">
+        <a id="loginModal" href = "/dashboard" style="color:#000000;">
+        <span class="fa fa-columns"></span> Dashboard </a>
+    </span>   
+    <span class="navbar-text">
+        &nbsp;&nbsp;&nbsp;<a id="signOutButton" href = "/logout" style="color:#000000;"> 
+        <span class="fa fa-sign-out"></span> Logout </a>
+    </span> 
+
+{% endblock %}
+
+
+{% block body %}
+
+<div class='container'>
+    {% for message in get_flashed_messages() %}
+        <div class="container">
+            <div class="row">
+                <div class="col-8 offset-2">
+                    <div class="alert alert-warning">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="dropdown" style="text-align: right;">
+    <button style="text-align: right; color:#ffffff;" class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        A Guide to Book Conditions
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" >New:  The book is in the same immaculate condition as when it was published.  </a>
+      <a class="dropdown-item" >Fine: The book may have been opened and read, but there are no defects to the book, jacket or pages.</a>
+      <a class="dropdown-item" >Good: The average used worn book that has all pages or leaves present.</a>
+      <a class="dropdown-item" >Poor: The book may be soiled, scuffed, stained or spotted and may have loose joints, hinges, pages, etc.</a>
+    </div>
+</div>
+
+
+
+<div id="buyForm" class="container">
+    <h1>Buy Books</h1>
+    <br>
+    {% if books|length < 1 %}
+    <h4 style="text-align: center;">There are no books available</h4>
+
+    {% else %}
+
+    <table style="color:#f3f2f0;">
+        <tr>
+            <th>Book Name</th>
+            <th>Book ID</th>
+            <th>Price</th>
+            <th>Pages</th>
+            <th>Condition</th>
+            <th>Actions</th>
+        </tr>
+        {% for book in books %}
+            <tr style="text-transform: uppercase;">
+                <td>{{ book.title }}</td>
+                <td>{{ book.isbn }}</td>
+                <td>{{ book.price }}</td>
+                <td>{{ book.pages }}</td>
+                <td>{{ book.condition }}</td>
+                <td>
+                    <a style="color:#f3f2f0;" href="/buying/{{book.id}}">Buy This Book</a>
+                    <br>
+                    <a style="color:#f3f2f0;" href="/rating/{{book.id}}">Give Rating</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+
+    <!--
+    <form action="/" method="POST">
+        <input type="text" name="content" id="content">
+        <input type="submit" value="Add Task">
+    </form>
+    -->
+
+</div>
+
+{% endblock %}
+
+
+
+{% block footer %}
+{% endblock %}
