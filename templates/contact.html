@@ -62,6 +62,11 @@
     body {
         background-image: url('/static/img/images/contact_wallpaper.jpg');
     }
+    @media (max-width: 767px){
+        #contactForm{
+            margin-top: 40px;
+        }
+    }
 </style>
 {% endblock %}
 
@@ -71,7 +76,7 @@
 
 {% block body %}
 
-<div class="container">
+<div id="contactForm" class="container">
     <h1>Contact Us</h1>    
     <br>
     <form action="" method="POST">

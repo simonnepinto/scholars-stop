@@ -130,6 +130,9 @@ body,html {
     top: 30px;
     font-size: small;
   }
+  .alert{
+    margin-top: 40px;
+  }
 }
 
 .content{
