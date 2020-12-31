@@ -1,3 +1,4 @@
+#import statements
 from flask import Flask, render_template, url_for, request, redirect, session, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, LoginManager, login_user, logout_user, login_required, current_user
@@ -10,10 +11,10 @@ import secrets
 
 secret_key = secrets.token_hex(16)  #generate a random secret key
 
-app = Flask(__name__) 
-#run_with_ngrok(app)
+app = Flask(__name__) # Construct an instance of Flask class for our webapp
+
 app.secret_key = secret_key
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db' #the database URI that should be used for the connection
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -24,6 +25,7 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(100))
     name = db.Column(db.String(1000))
 
+    #Relationship with other tables
     books = db.relationship('Book', backref='user')
     transactions = db.relationship('Transaction', backref='user')
     ratings = db.relationship('Rating', backref='user')
@@ -62,7 +64,6 @@ class Transaction(UserMixin, db.Model):
 class Rating(UserMixin, db.Model):
     __tablename__ = "rating"
     id = db.Column(db.Integer, primary_key=True)
-    #book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     issues = db.Column(db.String(1000))
@@ -100,7 +101,7 @@ list_book = []
 def user_loader(user_id):
     return User.query.get(user_id)
 
-@app.route('/')
+@app.route('/') #URL '/' to be handled by main() route handler
 def index():
     return render_template('index.html')
 
@@ -115,19 +116,10 @@ def admin():
 
 @app.route('/admin_dashboard')
 @login_required
-def admin_dashboard():
-    '''
-    books_sold = Transaction.query.order_by(Transaction.date_added).all()
-    book_new = Book.query.order_by(Book.date_added).all()
-    if book_new:
-        for book in book_new:
-            books_sold.append(book)
-    '''
-    
+def admin_dashboard():  
     books_sell = (db.session.query(Transaction.title, Transaction.isbn, Transaction.price, Transaction.pages, Transaction.condition, Transaction.date_added, User.name).join(User, User.id==Transaction.seller_id)).order_by(Transaction.date_added).all()
     books_more = (db.session.query(Book.title, Book.isbn, Book.price, Book.pages, Book.condition, Book.date_added, User.name).join(User, User.id==Book.seller_id)).order_by(Book.date_added).all()
 
-    #books_bought = Transaction.query.order_by(Transaction.date_added).all()
     books_bought = (db.session.query(Transaction.title, Transaction.isbn, Transaction.amt_sold_for, Transaction.order_date, User.name).join(User)).order_by(Transaction.date_added).all()
 
     ratings = (db.session.query(Rating.id, Rating.rating, Rating.issues, User.name).join(User)).order_by(Rating.timestamp).all()
@@ -245,7 +237,6 @@ def buying(id):
     new_transaction = Transaction(buyer_id=current_user.id, price=book_to_buy.price, book_id = book_to_buy.id, seller_id=book_to_buy.seller_id, title=book_to_buy.title, isbn=book_to_buy.isbn, pages=book_to_buy.pages, condition=book_to_buy.condition, date_added=book_to_buy.date_added, amt_sold_for=book_to_buy.price )
 
     try:
-        #book_to_buy.book_transactions.append(new_transaction)
         db.session.add(new_transaction)
         db.session.delete(book_to_buy)
         db.session.commit()
@@ -303,102 +294,30 @@ def rating(id):
 @app.route('/delete_rating/<int:id>')
 @login_required
 def delete_rating(id):
-    rating_to_delete = Rating.query.get_or_404(id)
+    rating_to_delete = Rating.query.get_or_404(id) #retreive the query to delete
 
     try:
         db.session.delete(rating_to_delete)
         db.session.commit()
-        flash('Rating has been deleted')
-        return redirect(url_for('admin_dashboard'))
+        flash('Rating has been deleted') ##Display a message to the user
+        return redirect(url_for('admin_dashboard')) #Redirect to admin dashboard
 
     except:
         return 'There was a problem deleting the rating'
 
-@app.route('/delete_query/<int:id>')
+@app.route('/delete_query/<int:id>') 
 @login_required
 def delete_query(id):
-    query_to_delete = Contact_Detail.query.get_or_404(id)
+    query_to_delete = Contact_Detail.query.get_or_404(id) #retreive the query to delete
 
     try:
         db.session.delete(query_to_delete)
         db.session.commit()
-        flash('Query has been solved')
-        return redirect(url_for('admin_dashboard'))
+        flash('Query has been solved') #Display a message to the user
+        return redirect(url_for('admin_dashboard')) #Redirect to admin dashboard
 
     except:
         return 'There was a problem deleting the query'
-
-'''
-@app.route('/', )
-def index():
-    if request.method == 'POST':
-        task_content = request.form['content']
-        new_task = Todo(content=task_content)
-
-        try:
-            db.session.add(new_task)
-            db.session.commit()
-            return redirect('/')
-        except:
-            return 'There was an issue adding your task'
-
-    else:
-        tasks = Todo.query.order_by(Todo.date_created).all()
-        return render_template('index.html', tasks = tasks)
-'''
-
-'''
-@app.route('/delete/<int:id>')
-def delete(id):
-    task_to_delete = Todo.query.get_or_404(id)
-
-    try:
-        db.session.delete(task_to_delete)
-        db.session.commit()
-        return redirect('/')
-
-    except:
-        return 'There was a problem deleting the task'
-
-
-@app.route('/update/<int:id>', methods=['GET', 'POST'])
-def update(id):
-    task = Todo.query.get_or_404(id)
-
-    if request.method == 'POST':
-        task.content = request.form['content']
-
-        try:
-            db.session.commit()
-            return redirect('/')
-
-        except:
-            return 'There was an issue updating your task'
-    else:
-        return render_template('update.html', task=task)
-
-
-    
-
-
-def getBookTitle(books_bought): 
-    books = [] 
-    for book in books_bought:
-        book_to_buy = Book.query.get_or_404(book.book_id)
-        books.append(book_to_buy.title)
-
-    return books
-
-
-def getBookISBN(books_bought):  
-    books = [] 
-    for book in books_bought:
-        book_to_buy = Book.query.get_or_404(book.book_id)
-        books.append(book_to_buy.isbn)
-
-    return books
-'''
-
 
 if __name__ == "__main__":
     app.run(debug=True)
