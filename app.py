@@ -114,6 +114,7 @@ def user():
 def admin():
     return render_template('admin.html', name=current_user.name)
 
+#Admin's dashboard
 @app.route('/admin_dashboard')
 @login_required
 def admin_dashboard():  
@@ -127,6 +128,7 @@ def admin_dashboard():
    
     return render_template('admin_dashboard.html', books_sold=books_sell, books_more=books_more,books_bought=books_bought, queries=queries, ratings=ratings, name=current_user.name)
 
+#For displaying the dashboard
 @app.route('/dashboard')
 @login_required
 def dashboard():
@@ -140,6 +142,7 @@ def dashboard():
     
     return render_template('dashboard.html', name=current_user.name,  books=books_sold, transactions=books_bought)
 
+#For logging in users
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -150,10 +153,12 @@ def login():
 
         user = User.query.filter_by(email=email).first()
 
+        #If user is not registered
         if not user or not check_password_hash(user.password, password):
             flash('Please check your login details and try again.')
             return redirect(url_for('login'))
 
+        #If admin logs into the system
         if request.form['email'] == 'admin@admin' or request.form['password'] == 'admin':
             session['logged_in'] = True
             flash("You are logged in")
@@ -168,6 +173,7 @@ def login():
 
     return render_template('login.html', error=error)
 
+#For signing up new users
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -175,12 +181,13 @@ def signup():
         user_name = request.form['name']
         user_password = request.form['password']
 
-        user = User.query.filter_by(email=user_email).first()
+        user = User.query.filter_by(email=user_email).first() #Check if user exists
 
         if user:
             flash('Email address already exists')
             return redirect(url_for('signup'))
-
+        
+        #Store details of the new user into User table
         new_user = User(email=user_email, password=generate_password_hash(user_password, method='sha256'), name=user_name)
 
         try:
@@ -192,6 +199,7 @@ def signup():
         
     return render_template('signup.html')
 
+#For contacting the admin
 @app.route('/contact', methods=['POST', 'GET'])
 def contact_us():
     if request.method == 'POST':
@@ -200,12 +208,13 @@ def contact_us():
         phone = request.form['phone']
         subject = request.form['subject']
 
+        #Store necessary details into Contact_Detail table
         new_query = Contact_Detail(name=name, email=email, phone=phone, user_queries=subject)
 
         try:
             db.session.add(new_query)
             db.session.commit()
-            if current_user.is_authenticated:   
+            if current_user.is_authenticated:   #If user is logged in
                 flash("Thank you for contacting us") 
                 return redirect(url_for('user'))
             else:
@@ -216,7 +225,7 @@ def contact_us():
 
     return render_template('contact.html')
 
-
+#When user wants to log out
 @app.route('/logout')
 def logout():
     session.pop('logged_in', None)
@@ -230,14 +239,15 @@ def buy():
     books = Book.query.order_by(Book.date_added).all()
     return render_template('buy.html', books=books)
 
+#For buying books
 @app.route('/buying/<int:id>')
 @login_required
 def buying(id):
-    book_to_buy = Book.query.get_or_404(id)
+    book_to_buy = Book.query.get_or_404(id) # Retrieve a book by it ID
     new_transaction = Transaction(buyer_id=current_user.id, price=book_to_buy.price, book_id = book_to_buy.id, seller_id=book_to_buy.seller_id, title=book_to_buy.title, isbn=book_to_buy.isbn, pages=book_to_buy.pages, condition=book_to_buy.condition, date_added=book_to_buy.date_added, amt_sold_for=book_to_buy.price )
 
     try:
-        db.session.add(new_transaction)
+        db.session.add(new_transaction) #Store transaction information into Transaction table
         db.session.delete(book_to_buy)
         db.session.commit()
         flash("Your purchase was successful")
@@ -246,7 +256,7 @@ def buying(id):
         return 'There was an issue buying your book'
 
 
-
+#For selling books
 @app.route('/sell', methods = ['POST', 'GET'])
 @login_required
 def sell():
@@ -256,11 +266,11 @@ def sell():
         price = request.form['price']
         pages = request.form['pages']
         condition = request.form['condition']
-
+        #store all book related information into Book table
         new_book = Book(seller_id=current_user.id, title=title, isbn=isbn, price=price, pages=pages, condition=condition)
 
         try:
-            db.session.add(new_book)
+            db.session.add(new_book) #Add the book to the Book table
             db.session.commit()
             flash("Your book has been added")
             return redirect(url_for('user'))
@@ -269,18 +279,19 @@ def sell():
 
     return render_template('sell.html')
 
+#Store the ratings in Rating 
 @app.route('/rating/<int:id>', methods = ['POST', 'GET'])
 @login_required
 def rating(id):
     book_to_rate = Book.query.get_or_404(id)
     if request.method == 'POST':
-        rating = request.form['rating']
-        issues = request.form['queries']
+        rating = request.form['rating'] #retrieve the rating given by user 
+        issues = request.form['queries'] #retrieve the issues written by user 
 
         book_rating = Rating(user_id=current_user.id, rating = rating, issues = issues )
 
         try:
-            db.session.add(book_rating)
+            db.session.add(book_rating) #add to Rating table
             db.session.commit()
             flash('Thank you for rating the book')
             return redirect(url_for('buy'))
@@ -291,6 +302,7 @@ def rating(id):
     else:
         return render_template('rating.html', book = book_to_rate)
 
+#Delete a rating
 @app.route('/delete_rating/<int:id>')
 @login_required
 def delete_rating(id):
@@ -299,12 +311,13 @@ def delete_rating(id):
     try:
         db.session.delete(rating_to_delete)
         db.session.commit()
-        flash('Rating has been deleted') ##Display a message to the user
+        flash('Rating has been deleted') #Display a message to the user
         return redirect(url_for('admin_dashboard')) #Redirect to admin dashboard
 
     except:
         return 'There was a problem deleting the rating'
 
+#Delete a query
 @app.route('/delete_query/<int:id>') 
 @login_required
 def delete_query(id):
