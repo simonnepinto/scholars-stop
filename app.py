@@ -26,10 +26,10 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(1000))
 
     #Relationship with other tables
-    books = db.relationship('Book', backref='user')
-    transactions = db.relationship('Transaction', backref='user')
-    ratings = db.relationship('Rating', backref='user')
-
+    books = db.relationship('Book', backref='user') #one to many relationship with Book table
+    transactions = db.relationship('Transaction', backref='user') #one to many relationship with Transaction table
+    ratings = db.relationship('Rating', backref='user') #one to many relationship with Rating table
+    book_complaints = db.relationship('Book_Complaints', backref='user') #one to many relationship with Rating table
 
 class Book(UserMixin, db.Model):
     __tablename__ = "book"
@@ -42,8 +42,8 @@ class Book(UserMixin, db.Model):
     condition = db.Column(db.String(1000))
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
 
-    book_transactions = db.relationship('User', backref='book')
-    
+    book_transactions = db.relationship('User', backref='book') 
+    book_complaints = db.relationship('Book_Complaints', backref='book', cascade="all, delete-orphan")
 
 class Transaction(UserMixin, db.Model):
     __tablename__ = "transaction"
@@ -67,6 +67,15 @@ class Rating(UserMixin, db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     issues = db.Column(db.String(1000))
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+
+class Book_Complaints(UserMixin, db.Model):
+    __tablename__ = "book_complaints"
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=False)
+    comment = db.Column(db.String(1000))
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
 
@@ -125,8 +134,9 @@ def admin_dashboard():
 
     ratings = (db.session.query(Rating.id, Rating.rating, Rating.issues, User.name).join(User)).order_by(Rating.timestamp).all()
     queries = Contact_Detail.query.all()
+    complaints = (db.session.query(Book_Complaints.book_id, Book_Complaints.comment, User.name, User.email).join(User)).order_by(Book_Complaints.timestamp).all()
    
-    return render_template('admin_dashboard.html', books_sold=books_sell, books_more=books_more,books_bought=books_bought, queries=queries, ratings=ratings, name=current_user.name)
+    return render_template('admin_dashboard.html', books_sold=books_sell, books_more=books_more,books_bought=books_bought, queries=queries, complaints = complaints, ratings=ratings, name=current_user.name)
 
 #For displaying the dashboard
 @app.route('/dashboard')
@@ -255,7 +265,6 @@ def buying(id):
     except:
         return 'There was an issue buying your book'
 
-
 #For selling books
 @app.route('/sell', methods = ['POST', 'GET'])
 @login_required
@@ -289,9 +298,12 @@ def rating(id):
         issues = request.form['queries'] #retrieve the issues written by user 
 
         book_rating = Rating(user_id=current_user.id, rating = rating, issues = issues )
+        new_complaint = Book_Complaints(user_id = current_user.id, comment = issues, book_id = id)
 
         try:
             db.session.add(book_rating) #add to Rating table
+            db.session.add(new_complaint)
+            db.session.commit()
             db.session.commit()
             flash('Thank you for rating the book')
             return redirect(url_for('buy'))

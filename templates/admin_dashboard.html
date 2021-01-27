@@ -176,6 +176,32 @@
 
 <br>
 
+<h2>Complaints of books on sale</h2>
+
+{% if complaints|length < 1 %}
+    <h4 style="text-align: center; color:#f5d7d7; padding: 5px;">No active complaints yet</h4>
+
+{% else %}
+<table style="color:#f5d7d7; padding: 5px;">
+    <tr>
+        <th>User Name</th>
+        <th>User Email</th>
+        <th>Book ID</th>
+        <th>Queries</th>
+    </tr>
+    {% for complaint in complaints %}
+        <tr style="text-transform: uppercase;">
+            <td>{{ complaint.name }}</td> 
+            <td>{{ complaint.email }}</td> 
+            <td>{{ complaint.book_id }}</td>    
+            <td>{{ complaint.comment }}</td> 
+        </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+<br>
+
 <h2>User Queries</h2>
 
 {% if queries|length < 1 %}
@@ -201,6 +227,8 @@
     {% endfor %}
 </table>
 {% endif %}
+
+
 
 <!--
 <table id="book" style="color:#f5d7d7; border-collapse: collapse; display: table; ">
