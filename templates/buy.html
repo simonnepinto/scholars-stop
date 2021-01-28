@@ -11,9 +11,17 @@
     h4{
         color: #faf7f3;
     }
+    .btn-primary{
+        background-color: rgba(168, 92, 20, 0.979);
+    }
     .btn-warning{
         background-color: rgba(119, 87, 18, 0.74);
     }   
+    input {
+        width: 400px;
+        height: 28px;
+    }
+
     body {
         background-image: url('/static/img/images/3.png');
     }
@@ -41,6 +49,29 @@
 
 {% block body %}
 
+<div class="dropdown" style="text-align: right">
+    <button style="text-align: right; color:#ffffff;" class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        A Guide to Book Conditions
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" >New:  The book is in the same immaculate condition as when it was published.  </a>
+      <a class="dropdown-item" >Fine: The book may have been opened and read, but there are no defects to the book, jacket or pages.</a>
+      <a class="dropdown-item" >Good: The average used worn book that has all pages or leaves present.</a>
+      <a class="dropdown-item" >Poor: The book may be soiled, scuffed, stained or spotted and may have loose joints, hinges, pages, etc.</a>
+    </div>
+</div>
+
+<div>
+    <form action="" method="POST" style="text-align: center; color:#ffffff;">
+        
+        <div class="text-center" id="sellButton">
+            <input type="text" placeholder="Search by book name" name="book" id="book" value="{{request.form.book }}">
+            <button type="submit" value="Submit">Search</button>
+        </div>
+        
+    </form>
+</div>
+
 <div class='container'>
     {% for message in get_flashed_messages() %}
         <div class="container">
@@ -55,19 +86,6 @@
         </div>
     {% endfor %}
 </div>
-
-<div class="dropdown" style="text-align: right;">
-    <button style="text-align: right; color:#ffffff;" class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        A Guide to Book Conditions
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" >New:  The book is in the same immaculate condition as when it was published.  </a>
-      <a class="dropdown-item" >Fine: The book may have been opened and read, but there are no defects to the book, jacket or pages.</a>
-      <a class="dropdown-item" >Good: The average used worn book that has all pages or leaves present.</a>
-      <a class="dropdown-item" >Poor: The book may be soiled, scuffed, stained or spotted and may have loose joints, hinges, pages, etc.</a>
-    </div>
-</div>
-
 
 
 <div id="buyForm" class="container">

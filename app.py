@@ -243,10 +243,16 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-@app.route('/buy')
+@app.route('/buy', methods = ['GET', 'POST'])
 @login_required
 def buy():
-    books = Book.query.order_by(Book.date_added).all()
+    if request.method == 'POST':
+        title = request.form['book']
+        books = Book.query.filter(Book.title.like(title)).all() # Retrieve a book by its ID
+        #books = Book.query.filter_by(title=title).all() # Retrieve a book by its ID
+    else:
+        books = Book.query.order_by(Book.date_added).all()
+        
     return render_template('buy.html', books=books)
 
 #For buying books
@@ -264,7 +270,7 @@ def buying(id):
         return redirect(url_for('user'))
     except:
         return 'There was an issue buying your book'
-
+     
 #For selling books
 @app.route('/sell', methods = ['POST', 'GET'])
 @login_required
