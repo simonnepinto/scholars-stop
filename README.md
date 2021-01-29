@@ -31,25 +31,16 @@ $ git clone https://github.com/simonnepinto/scholars-stop.git
 ## Demo 🛠️
 
 <table><tr><td valign="top" width="50%">
-
-chrome-extension://fdpohaocaechififmbbbbbknoalclacl/capture.html?id=14&url=http%3A%2F%2Fsimonne.pythonanywhere.com%2F
-
-
+![image](https://user-images.githubusercontent.com/53074235/106258951-94485a80-6244-11eb-94bf-236bbf0f01f7.png)
 </td><td valign="top" width="50%">
-
 ![image](https://user-images.githubusercontent.com/53074235/106244099-74a73700-6230-11eb-88aa-d4e473200e64.png)
 ![image](https://user-images.githubusercontent.com/53074235/106244641-3c542880-6231-11eb-9892-465e592ddb0e.png)
-
 </td></tr></table>  
 
 <table><tr><td valign="top" width="50%" height="123px">
-
 ![image](https://user-images.githubusercontent.com/53074235/106244199-97d1e680-6230-11eb-9976-32b5fe09a8cc.png)
-
 </td><td valign="top" width="50%" height="123px">
-
 ![image](https://user-images.githubusercontent.com/53074235/106244263-ac15e380-6230-11eb-841f-fa14cf2d8528.png)
-
 </td></tr></table>  
 
 ## Languages and Tools 🛠️ :
