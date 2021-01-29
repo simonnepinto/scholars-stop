@@ -1,18 +1,18 @@
-# Scholars Stop : An Online Book Rental System
+# Scholars Stop : An Online Book Rental System :books:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-##Overview :memo:
 
+## Overview :memo:
 
 In today’s digital world, with newer technologies being developed at a rapid pace, the book reading
 culture has begun to diminish. Despite the steady improvement in literacy rate in the nation, the growing
 lack of interest among the younger generation in reading books reflects some structural flaws in our
-education system.
+education system. :closed_book: :pencil2:
 
 Our website strives to bridge the gap between those willing to sell and those wanting to buy. This is a
 website-based project that focuses on acquisition, distribution, and management of books.
 This webapp has an easy-to-understand user interface offering services for students. The registered users
-can avail the facilities and functionalities offered by the webapp.
+can avail the facilities and functionalities offered by the webapp. :technologist:
 
 
 
@@ -27,6 +27,7 @@ From your command line:
 $ git clone https://github.com/simonnepinto/scholars-stop.git
 
 ```
+
 ## Demo 🛠️
 
 <table><tr><td valign="top" width="50%">
@@ -36,14 +37,13 @@ $ git clone https://github.com/simonnepinto/scholars-stop.git
 </td><td valign="top" width="50%">
 
 ![image](https://user-images.githubusercontent.com/53074235/106244099-74a73700-6230-11eb-88aa-d4e473200e64.png)
+![image](https://user-images.githubusercontent.com/53074235/106244641-3c542880-6231-11eb-9892-465e592ddb0e.png)
 
 </td></tr></table>  
 
 <table><tr><td valign="top" width="50%">
 
 ![image](https://user-images.githubusercontent.com/53074235/106244199-97d1e680-6230-11eb-9976-32b5fe09a8cc.png)
-![image](https://user-images.githubusercontent.com/53074235/106244641-3c542880-6231-11eb-9892-465e592ddb0e.png)
-
 
 </td><td valign="top" width="50%">
 
