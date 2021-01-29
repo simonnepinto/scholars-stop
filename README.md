@@ -32,7 +32,8 @@ $ git clone https://github.com/simonnepinto/scholars-stop.git
 
 <table><tr><td valign="top" width="50%">
 
-![image](https://user-images.githubusercontent.com/53074235/106243977-46c1f280-6230-11eb-97d8-8af8183718de.png)
+chrome-extension://fdpohaocaechififmbbbbbknoalclacl/capture.html?id=14&url=http%3A%2F%2Fsimonne.pythonanywhere.com%2F
+
 
 </td><td valign="top" width="50%">
 
