@@ -2,6 +2,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ##Overview :memo:
+
+
 In today’s digital world, with newer technologies being developed at a rapid pace, the book reading
 culture has begun to diminish. Despite the steady improvement in literacy rate in the nation, the growing
 lack of interest among the younger generation in reading books reflects some structural flaws in our
@@ -40,6 +42,8 @@ $ git clone https://github.com/simonnepinto/scholars-stop.git
 <table><tr><td valign="top" width="50%">
 
 ![image](https://user-images.githubusercontent.com/53074235/106244199-97d1e680-6230-11eb-9976-32b5fe09a8cc.png)
+![image](https://user-images.githubusercontent.com/53074235/106244641-3c542880-6231-11eb-9892-465e592ddb0e.png)
+
 
 </td><td valign="top" width="50%">
 
