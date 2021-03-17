@@ -8,6 +8,7 @@
 [![ForTheBadge uses-js](http://ForTheBadge.com/images/badges/uses-js.svg)](http://ForTheBadge.com) 
 ![Made with Flask](https://img.shields.io/badge/Made%20With-Flask-blue?style=flat-square)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/simonnepinto/Magical-Charisma-To-Solve-Your-Mental-Dilemma/issues) 
+![MIT](https://img.shields.io/github/license/USERNAME/REPONAME?style=flat-square)
 
 
 
