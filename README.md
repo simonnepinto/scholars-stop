@@ -6,7 +6,7 @@
 [![ForTheBadge uses-js](http://ForTheBadge.com/images/badges/uses-js.svg)](http://ForTheBadge.com) 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/simonnepinto/Magical-Charisma-To-Solve-Your-Mental-Dilemma/issues)
 
-$$\text{This is some centered text}$$
+
 <p align="center">
 <img height="400" src="https://user-images.githubusercontent.com/53074235/111452715-cf411780-8738-11eb-8a0a-3fb4a3fe32d9.png">
 </p>
