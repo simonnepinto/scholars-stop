@@ -1,5 +1,4 @@
-<h1 align="center">Scholars Stop : An Online Book Rental System :books: </h1>
-# Scholars Stop : An Online Book Rental System :books: 
+<h1 align="center">Scholars Stop : An Online Book Rental System :books: </h1> 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <p align="center">
   <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
