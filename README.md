@@ -1,6 +1,6 @@
- # Scholars Stop : An Online Book Rental System :books: 
+<h1 align="center">Scholars Stop : An Online Book Rental System :books: </h1>
+# Scholars Stop : An Online Book Rental System :books: 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 <p align="center">
   <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
   <img src="http://ForTheBadge.com/images/badges/uses-html.svg">
@@ -12,6 +12,7 @@
 <p align="center">
   <img src="https://forthebadge.com/images/badges/made-with-python.svg">
 </p>
+
 
 <p align="center">
 <img height="400" src="https://user-images.githubusercontent.com/53074235/111452715-cf411780-8738-11eb-8a0a-3fb4a3fe32d9.png">
