@@ -6,7 +6,9 @@
 [![ForTheBadge uses-js](http://ForTheBadge.com/images/badges/uses-js.svg)](http://ForTheBadge.com)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/simonnepinto/Magical-Charisma-To-Solve-Your-Mental-Dilemma/issues)
 
-
+<p align="center">
+<img src="https://user-images.githubusercontent.com/53074235/111450634-99029880-8736-11eb-87aa-7b16046b86c5.png">
+</p>
 ## Overview :memo:
 
 In today’s digital world, with newer technologies being developed at a rapid pace, the book reading
