@@ -54,6 +54,9 @@ $ git clone https://github.com/simonnepinto/scholars-stop.git
  
 ![image](https://user-images.githubusercontent.com/53074235/106244099-74a73700-6230-11eb-88aa-d4e473200e64.png)
 
+
+
+
 ![image](https://user-images.githubusercontent.com/53074235/106244641-3c542880-6231-11eb-9892-465e592ddb0e.png)
 
 </td></tr></table>  
