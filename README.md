@@ -5,6 +5,7 @@
 [![ForTheBadge uses-html](http://ForTheBadge.com/images/badges/uses-html.svg)](http://ForTheBadge.com) 
 [![ForTheBadge uses-css](http://ForTheBadge.com/images/badges/uses-css.svg)](http://ForTheBadge.com) 
 [![ForTheBadge uses-js](http://ForTheBadge.com/images/badges/uses-js.svg)](http://ForTheBadge.com) 
+[![ForTheBadge uses-js](https://forthebadge.com/images/badges/made-with-python.svg)](http://ForTheBadge.com) 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/simonnepinto/Magical-Charisma-To-Solve-Your-Mental-Dilemma/issues) 
 
 
