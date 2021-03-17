@@ -7,8 +7,19 @@
 [![ForTheBadge uses-js](http://ForTheBadge.com/images/badges/uses-js.svg)](http://ForTheBadge.com)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/simonnepinto/Magical-Charisma-To-Solve-Your-Mental-Dilemma/issues) 
 
-[![ForTheBadge uses-js](https://forthebadge.com/images/badges/made-with-python.svg)](http://ForTheBadge.com)
+<p align="center">
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
+  <img src="http://ForTheBadge.com/images/badges/uses-html.svg">
+  <img src="http://ForTheBadge.com/images/badges/uses-css.svg">
+  <img src="http://ForTheBadge.com/images/badges/uses-js.svg">
+  <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat">
+</p>
 
+
+
+<p align="center">
+  <img src="https://forthebadge.com/images/badges/made-with-python.svg">
+</p>
 
 <p align="center">
 <img height="400" src="https://user-images.githubusercontent.com/53074235/111452715-cf411780-8738-11eb-8a0a-3fb4a3fe32d9.png">
