@@ -58,8 +58,8 @@ $ git clone https://github.com/simonnepinto/scholars-stop.git
 
 </td></tr></table>  
 
-
-:-------------------------:|:-------------------------:
+|                           |                           |
+|:-------------------------:|:-------------------------:|
 <img src="https://user-images.githubusercontent.com/53074235/106244199-97d1e680-6230-11eb-9976-32b5fe09a8cc.png" width="100%"> |<img src="https://user-images.githubusercontent.com/53074235/106244263-ac15e380-6230-11eb-841f-fa14cf2d8528.png" width="100%">
 
 <table><tr><td valign="top" width="50%" height="123px">
