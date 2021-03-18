@@ -27,7 +27,7 @@ education system. :closed_book: :pencil2:
 
 Our website strives to bridge the gap between those willing to sell and those wanting to buy. This is a
 website-based project that focuses on acquisition, distribution, and management of books.
-This webapp has an easy-to-understand user interface offering services for students. The registered users
+The webapp has an easy-to-understand user interface offering services for students. The registered users
 can avail the facilities and functionalities offered by the webapp. :technologist:
 
 
